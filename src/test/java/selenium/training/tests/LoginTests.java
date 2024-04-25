@@ -1,10 +1,13 @@
 package selenium.training.tests;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import selenium.training.pages.DashboardPage;
 import selenium.training.pages.LoginPage;
+import selenium.training.utils.Driver;
 
 public class LoginTests {
 
@@ -37,6 +40,18 @@ public class LoginTests {
     @Test
     public void successfulLoginTest3() {
         loginPage.login("Admin", "admin123");
+    }
+
+    @Test
+    public void failureLoginTest() throws InterruptedException {
+        loginPage.login("Admin", "admin1234");
+        Thread.sleep(100000);
+
+        WebElement element = Driver.getDriver().findElement(By.className("oxd-alert-content--error"));
+
+        Assert.assertTrue(element.isDisplayed());
+
+
     }
 
 }
