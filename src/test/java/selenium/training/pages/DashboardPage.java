@@ -1,6 +1,6 @@
 package selenium.training.pages;
+
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import selenium.training.utils.Driver;

@@ -1,10 +1,7 @@
 package selenium.training.pages;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import selenium.training.utils.Driver;
-
-import java.time.Duration;
-
 
 public class ViewEmployeeListPage extends BasePage{
 
@@ -33,14 +30,11 @@ public class ViewEmployeeListPage extends BasePage{
         employeeNameWebElement.sendKeys(empName);
         //employeeIdWebElement.sendKeys(employeeId);
         //employeePersonalInfoCardWebElement.click();
-
     }
-
 
     public void clickAddEmployeeButton() {
         addButtonWebElement.click();
     }
-
 
     public void clickSearchEmployeeButton() {
         searchWebElement.click();
