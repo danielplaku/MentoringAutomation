@@ -50,7 +50,7 @@ public class LoginTests {
     public void failureLoginTest() throws InterruptedException {
         loginPage.login("Admin", "admin1234");
 
-
+//eksplicit
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
         WebElement element = Driver.getDriver().findElement(By.className("oxd-alert-content--error"));
 
