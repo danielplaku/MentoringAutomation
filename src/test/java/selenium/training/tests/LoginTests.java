@@ -3,6 +3,7 @@ package selenium.training.tests;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -57,6 +58,18 @@ public class LoginTests {
         Assert.assertTrue(element.isDisplayed());
 
 
+    }
+
+    @Test
+    public void unsuccessfulLoginTest() {
+        loginPage.login("WrongUsername", "WrongPassword");
+        String expectedErrorMessage = "Invalid credentials";
+        WebDriverWait explicitWait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(20));
+        By by = By.cssSelector("p[class='oxd-text oxd-text--p oxd-alert-content-text']");
+        explicitWait.until(ExpectedConditions.textToBe(by, expectedErrorMessage));
+
+        String invalidText = Driver.getDriver().findElement(by).getText();
+        Assert.assertEquals(invalidText, expectedErrorMessage);
     }
 
 }
