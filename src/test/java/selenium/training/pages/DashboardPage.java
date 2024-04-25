@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import selenium.training.utils.Driver;
 
 public class DashboardPage extends BasePage {
+
     @FindBy(css = ".oxd-topbar-header-userarea ul[class='oxd-dropdown-menu'] li:nth-child(4)")
     public WebElement logoutButtonWebElement;
 

@@ -7,11 +7,7 @@
 
 <test name="Employee Tests">
     <classes>
-        <class name="selenium.training.tests.AddNewEmployeeTest">
-            <methods>
-                <include name="successfulLoginTest"/>
-            </methods>
-        </class>
+        <class name="selenium.training.tests.AddNewEmployeeTest" />
     </classes>
 </test>
 </suite>

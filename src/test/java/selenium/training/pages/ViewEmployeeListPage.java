@@ -30,6 +30,7 @@ public class ViewEmployeeListPage extends BasePage{
         employeeNameWebElement.sendKeys(empName);
         //employeeIdWebElement.sendKeys(employeeId);
         //employeePersonalInfoCardWebElement.click();
+        clickSearchEmployeeButton();
     }
 
     public void clickAddEmployeeButton() {

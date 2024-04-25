@@ -5,7 +5,7 @@
         <listener class-name="selenium.training.utils.Listeners"/>
     </listeners>
 
-    <test name="Login Tests">
+    <test name="All Tests">
         <classes>
             <class name="selenium.training.tests.LoginTests">
                 <methods>
@@ -14,16 +14,11 @@
                     <include name="successfulLoginTest3"/>
                 </methods>
             </class>
-            <class name="selenium.training.tests.Login2Tests">
+            <class name="selenium.training.tests.AddNewEmployeeTest">
                 <methods>
-                    <include name="successfulLoginTest3"/>
+                    <include name="addNewEmployeeTest" />
                 </methods>
             </class>
-<!--            <class name="selenium.training.tests.AddNewEmployeeTest">-->
-<!--                <methods>-->
-<!--                    <include name="addNewEmployeeTest" />-->
-<!--                </methods>-->
-<!--            </class>-->
         </classes>
     </test>
 </suite>

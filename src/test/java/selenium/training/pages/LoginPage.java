@@ -1,8 +1,10 @@
 package selenium.training.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import selenium.training.utils.Driver;
+import selenium.training.utils.GlobalConfigs;
 
 public class LoginPage extends BasePage {
 
@@ -27,7 +29,7 @@ public class LoginPage extends BasePage {
     }
 
     public void navigateToHomePage() {
-        Driver.getDriver().get("https://opensource-demo.orangehrmlive.com/");
+        Driver.getDriver().get(GlobalConfigs.URL);
     }
 
 }

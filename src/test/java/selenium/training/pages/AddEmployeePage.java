@@ -1,9 +1,7 @@
 package selenium.training.pages;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import selenium.training.utils.Driver;
-
-import java.time.Duration;
 
 public class AddEmployeePage extends BasePage{
     @FindBy(css = "input[name='firstName']")
@@ -24,7 +22,7 @@ public class AddEmployeePage extends BasePage{
     @FindBy(css = "button[type='submit']")
     public WebElement saveButtonWebElement;
 
-    public void addEmployee(String firstName, String lastName,String middleName, String empId, String username,String password) throws InterruptedException {
+    public void addEmployee(String firstName, String lastName, String middleName, String empId) throws InterruptedException {
         Thread.sleep(2000);
         employeeFirstNameWebElement.clear();
         employeeFirstNameWebElement.sendKeys(firstName);
@@ -37,10 +35,8 @@ public class AddEmployeePage extends BasePage{
 
         employeeIdWebElement.clear();
         employeeIdWebElement.sendKeys(empId);
-
-        //createLoginDetailsWebElement.click();
-        //saveButtonWebElement.click();
     }
+
     public void clickSaveEmployeeButton() {
         saveButtonWebElement.click();
     }

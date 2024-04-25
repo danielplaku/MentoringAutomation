@@ -1,13 +1,10 @@
 package selenium.training.tests;
 
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import org.testng.Assert;
 import org.openqa.selenium.By;
 import selenium.training.pages.*;
 import selenium.training.utils.Driver;
-
-
 
 public class AddNewEmployeeTest {
     private LoginPage login;
@@ -35,13 +32,12 @@ public class AddNewEmployeeTest {
         login.login("Admin", "admin123");
         dashboard.clickPIMTab();
         viewEmployeeListPage.clickAddEmployeeButton();
-        addEmpPage.addEmployee("John", "Doe", "123", "0285", "john07", "Orange12!");
+        addEmpPage.addEmployee("John", "Harry", "Lee", "0286");
         addEmpPage.clickSaveEmployeeButton();
         personalDetailsPage.clickEmployeeListTab();
-        viewEmployeeListPage.searchEmployee("John");
-        viewEmployeeListPage.clickSearchEmployeeButton();
+        viewEmployeeListPage.searchEmployee("John Doe");
         String firstAndMiddleName = Driver.getDriver().findElement(By.xpath("/html/body/div/div[1]/div[2]/div[2]/div/div[2]/div[3]/div/div[2]/div/div/div[3]")).getText();
-        Assert.assertEquals(firstAndMiddleName, "John");
+        Assert.assertEquals(firstAndMiddleName, "John James");
     }
 }
 

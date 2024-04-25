@@ -29,7 +29,7 @@ public class Driver {
                 driver = new FirefoxDriver(options);
                 break;
             case EDGE:
-                System.setProperty("webdriver.edge.driver", "C:\\Users\\Dell\\Desktop\\msedgedriver.exe");
+                WebDriverManager.edgedriver().setup();
                 driver = new EdgeDriver();
                 break;
             default:
