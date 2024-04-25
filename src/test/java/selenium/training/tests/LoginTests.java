@@ -1,13 +1,17 @@
 package selenium.training.tests;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import selenium.training.pages.DashboardPage;
 import selenium.training.pages.LoginPage;
 import selenium.training.utils.Driver;
+
+import java.time.Duration;
 
 public class LoginTests {
 
@@ -45,8 +49,9 @@ public class LoginTests {
     @Test
     public void failureLoginTest() throws InterruptedException {
         loginPage.login("Admin", "admin1234");
-        Thread.sleep(100000);
 
+
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
         WebElement element = Driver.getDriver().findElement(By.className("oxd-alert-content--error"));
 
         Assert.assertTrue(element.isDisplayed());
