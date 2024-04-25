@@ -1,10 +1,12 @@
 package selenium.training.tests;
 
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import selenium.training.pages.DashboardPage;
 import selenium.training.pages.LoginPage;
+import selenium.training.utils.Driver;
 
 public class LoginTests {
 
@@ -34,9 +36,20 @@ public class LoginTests {
         //loginPage.tearDown();
     }
 
+
     @Test
     public void successfulLoginTest3() {
         loginPage.login("Admin", "admin123");
     }
+
+    @Test
+    public void unsuccessfulLoginTest() {
+        loginPage.login("WrongUsername", "WrongPassword");
+
+        String invalidText = Driver.getDriver().findElement(By.cssSelector("p[class='oxd-text oxd-text--p oxd-alert-content-text']")).getText();
+        Assert.assertEquals(invalidText, "Invalid credentials");
+
+    }
+
 
 }
