@@ -1,10 +1,14 @@
 package selenium.training.tests;
 
+import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import selenium.training.pages.DashboardPage;
 import selenium.training.pages.LoginPage;
+import selenium.training.utils.Driver;
 
 public class LoginTests {
 
@@ -37,6 +41,13 @@ public class LoginTests {
     @Test
     public void successfulLoginTest3() {
         loginPage.login("Admin", "admin123");
+    }
+
+    @Test
+    public void unSuccessfulLoginTest3() {
+        loginPage.login("wrongUsername", "wrongPassword");
+        WebElement errorMessageElement = Driver.getDriver().findElement(By.className("oxd-text oxd-text--p oxd-alert-content-text"));
+        Assert.assertTrue(errorMessageElement.getText().contains("Invalid credentials"));
     }
 
 }
