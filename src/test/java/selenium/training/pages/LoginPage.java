@@ -27,9 +27,7 @@ public class LoginPage extends BasePage {
         //click login
         loginButtonWebElement.click();
     }
-
     public void navigateToHomePage() {
         Driver.getDriver().get(GlobalConfigs.URL);
     }
-
 }
