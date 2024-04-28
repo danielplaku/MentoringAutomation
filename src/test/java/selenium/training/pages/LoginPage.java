@@ -1,12 +1,15 @@
 package selenium.training.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import selenium.training.utils.Driver;
 import selenium.training.utils.GlobalConfigs;
+import selenium.training.utils.Wait;
 
 public class LoginPage extends BasePage {
+
+    public static final String INVALID_CREDENTIALS = "Invalid credentials";
 
     @FindBy(css = "input[name='username']")
     public WebElement usernameWebElement;
@@ -16,6 +19,9 @@ public class LoginPage extends BasePage {
 
     @FindBy(css = "button[type='submit']")
     public WebElement loginButtonWebElement;
+
+    @FindBy(css = ".oxd-text.oxd-text--p.oxd-alert-content-text")
+    public WebElement errorMessageWebElement;
 
     public void login(String username, String password) {
         navigateToHomePage();
@@ -32,4 +38,9 @@ public class LoginPage extends BasePage {
         Driver.getDriver().get(GlobalConfigs.URL);
     }
 
+    public String getErrorMessage() {
+        // add explicit wait for error message to be displayed
+        Wait.getWait().until(ExpectedConditions.visibilityOf(errorMessageWebElement));
+        return errorMessageWebElement.getText();
+    }
 }

@@ -16,6 +16,9 @@ public class DashboardPage extends BasePage {
     @FindBy(css = "a[href='/web/index.php/pim/viewPimModule']")
     public WebElement pimTabWebElement;
 
+    @FindBy(css = "a[href='/web/index.php/recruitment/viewRecruitmentModule']")
+    public WebElement recruitmentTabWebElement;
+
     public void logout() {
         openProfileWebElement.click();
         logoutButtonWebElement.click();
@@ -25,4 +28,9 @@ public class DashboardPage extends BasePage {
     public void clickPIMTab() {
         pimTabWebElement.click();
     }
+
+    public void clickRecruitmentTab() {
+        recruitmentTabWebElement.click();
+    }
+
 }
