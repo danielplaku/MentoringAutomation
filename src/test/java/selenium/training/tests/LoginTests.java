@@ -1,8 +1,10 @@
 package selenium.training.tests;
 
-import org.junit.jupiter.api.Assertions;
+import java.time.Duration;
+
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
@@ -44,10 +46,15 @@ public class LoginTests {
     }
 
     @Test
-    public void unSuccessfulLoginTest3() {
-        loginPage.login("wrongUsername", "wrongPassword");
-        WebElement errorMessageElement = Driver.getDriver().findElement(By.className("oxd-text oxd-text--p oxd-alert-content-text"));
-        Assert.assertTrue(errorMessageElement.getText().contains("Invalid credentials"));
-    }
+    public void unsuccessfulLoginTest() {
+        loginPage.login("WrongUsername", "WrongPassword");
+        String expectedErrorMessage = "Invalid credentials";
+        WebDriverWait explicitWait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(20));
+        By by = By.cssSelector("p[class='oxd-text oxd-text--p oxd-alert-content-text']");
+        explicitWait.until(ExpectedConditions.textToBe(by, expectedErrorMessage));
 
+        String invalidText = Driver.getDriver().findElement(by).getText();
+        Assert.assertEquals(invalidText, expectedErrorMessage);
+    }
+    
 }
