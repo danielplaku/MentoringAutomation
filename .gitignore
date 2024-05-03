@@ -14,4 +14,4 @@ dist/
 # JetBrains IDE
 .idea/
 *.iml
-/test-output/failure_screenshots/
+test-output/

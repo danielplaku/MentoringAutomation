@@ -45,7 +45,7 @@ public class Listeners implements ITestListener {
 
     @Override
     public void onFinish(ITestContext iTestContext) {
-        Driver.getDriver().quit();
+        Driver.getDriver().close();
     }
 }
 

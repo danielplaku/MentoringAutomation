@@ -1,5 +1,6 @@
 package selenium.training.tests;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import org.testng.Assert;
 import org.openqa.selenium.By;
@@ -21,23 +22,22 @@ public class AddNewEmployeeTest {
         personalDetailsPage = new PersonalDetailsPage();
     }
 
-    /*@AfterMethod
+    @AfterMethod
     public void afterEach()  {
-        Driver.getDriver().close();}
-    Driver.getDriver().quit();
-    }*/
+        viewEmployeeListPage.logout();
+    }
 
     @Test
     public void addNewEmployee() throws InterruptedException {
         login.login("Admin", "admin123");
         dashboard.clickPIMTab();
         viewEmployeeListPage.clickAddEmployeeButton();
-        addEmpPage.addEmployee("John", "Harry", "Lee", "0286");
+        addEmpPage.addEmployee("John", "Doe", "Lee", "0286");
         addEmpPage.clickSaveEmployeeButton();
         personalDetailsPage.clickEmployeeListTab();
-        viewEmployeeListPage.searchEmployee("John Doe");
+        viewEmployeeListPage.searchEmployee("John Lee");
         String firstAndMiddleName = Driver.getDriver().findElement(By.xpath("/html/body/div/div[1]/div[2]/div[2]/div/div[2]/div[3]/div/div[2]/div/div/div[3]")).getText();
-        Assert.assertEquals(firstAndMiddleName, "John James");
+        Assert.assertEquals(firstAndMiddleName, "John Lee");
     }
 }
 
