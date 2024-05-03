@@ -9,15 +9,20 @@
         <classes>
             <class name="selenium.training.tests.LoginTests">
                 <methods>
-                    <include name="successfulLoginTest"/>
-                    <include name="successfulLoginTest2"/>
-                    <exclude name="successfulLoginTest3"/>
+                    <include name="successfulLoginTest" />
+                    <include name="successfulLoginTest2" />
+                    <exclude name="successfulLoginTest3" />
                     <include name="unsuccessfulLoginTest" />
                 </methods>
             </class>
             <class name="selenium.training.tests.AddNewEmployeeTest">
                 <methods>
                     <include name="addNewEmployeeTest" />
+                </methods>
+            </class>
+            <class name="selenium.training.tests.VacanciesFilterTest">
+                <methods>
+                    <include name="filterVacanciesByVacancyFilterTest" />
                 </methods>
             </class>
         </classes>

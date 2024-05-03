@@ -1,21 +1,25 @@
 package selenium.training.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import selenium.training.utils.Driver;
 import selenium.training.utils.GlobalConfigs;
+import selenium.training.utils.Wait;
 
 public class LoginPage extends BasePage {
 
     @FindBy(css = "input[name='username']")
-    public WebElement usernameWebElement;
+    private WebElement usernameWebElement;
 
     @FindBy(css = "input[name='password']")
-    public WebElement passwordWebElement;
+    private WebElement passwordWebElement;
 
     @FindBy(css = "button[type='submit']")
-    public WebElement loginButtonWebElement;
+    private WebElement loginButtonWebElement;
+
+    @FindBy(css = ".oxd-alert-content-text")
+    private WebElement errorMessageWebElement;
 
     public void login(String username, String password) {
         navigateToHomePage();
@@ -32,4 +36,8 @@ public class LoginPage extends BasePage {
         Driver.getDriver().get(GlobalConfigs.URL);
     }
 
+    public String getErrorMessage() {
+        Wait.getWait().until(ExpectedConditions.visibilityOf(errorMessageWebElement));
+        return errorMessageWebElement.getText();
+    }
 }

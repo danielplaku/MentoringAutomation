@@ -8,15 +8,15 @@ import selenium.training.pages.*;
 import selenium.training.utils.Driver;
 
 public class AddNewEmployeeTest {
-    private LoginPage login;
-    private DashboardPage dashboard;
-    private AddEmployeePage addEmpPage;
-    private ViewEmployeeListPage viewEmployeeListPage;
-    private PersonalDetailsPage personalDetailsPage;
+    private final LoginPage loginPage;
+    private final DashboardPage dashboardPage;
+    private final AddEmployeePage addEmpPage;
+    private final ViewEmployeeListPage viewEmployeeListPage;
+    private final PersonalDetailsPage personalDetailsPage;
 
     public AddNewEmployeeTest() {
-        login = new LoginPage();
-        dashboard = new DashboardPage();
+        loginPage = new LoginPage();
+        dashboardPage = new DashboardPage();
         addEmpPage = new AddEmployeePage();
         viewEmployeeListPage = new ViewEmployeeListPage();
         personalDetailsPage = new PersonalDetailsPage();
@@ -29,8 +29,8 @@ public class AddNewEmployeeTest {
 
     @Test
     public void addNewEmployee() throws InterruptedException {
-        login.login("Admin", "admin123");
-        dashboard.clickPIMTab();
+        loginPage.login("Admin", "admin123");
+        dashboardPage.clickPIMTab();
         viewEmployeeListPage.clickAddEmployeeButton();
         addEmpPage.addEmployee("John", "Doe", "Lee", "0286");
         addEmpPage.clickSaveEmployeeButton();

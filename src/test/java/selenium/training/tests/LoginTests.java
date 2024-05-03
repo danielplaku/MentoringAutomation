@@ -1,21 +1,15 @@
 package selenium.training.tests;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import selenium.training.pages.DashboardPage;
 import selenium.training.pages.LoginPage;
-import selenium.training.utils.Driver;
-
-import java.time.Duration;
 
 public class LoginTests {
 
-    private LoginPage loginPage;
-    private DashboardPage dashboardPage;
+    private final LoginPage loginPage;
+    private final DashboardPage dashboardPage;
 
     public LoginTests() {
         loginPage = new LoginPage();
@@ -45,16 +39,20 @@ public class LoginTests {
         loginPage.login("Admin", "admin123");
     }
 
+
+    /*
+        1️⃣ Implement below test by following POM architecture:
+        1.Go to https://opensource-demo.orangehrmlive.com/
+        2.In the field 'Username' enter: WrongUsername
+        3.In the 'Password' field enter: WrongPassword
+        4.Click the Login button
+        5.Make sure that user is not logged in successfully and
+        an error message with text “Invalid credentials” is displayed
+    */
+
     @Test
     public void unsuccessfulLoginTest() {
         loginPage.login("WrongUsername", "WrongPassword");
-        String expectedErrorMessage = "Invalid credentials";
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(20));
-        By by = By.cssSelector("p[class='oxd-text oxd-text--p oxd-alert-content-text']");
-        wait.until(ExpectedConditions.textToBe(by, expectedErrorMessage));
-
-        String invalidText = Driver.getDriver().findElement(by).getText();
-        Assert.assertEquals(invalidText, expectedErrorMessage);
+        Assert.assertEquals("Invalid credentials", loginPage.getErrorMessage());
     }
-
 }

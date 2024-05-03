@@ -5,22 +5,22 @@ import org.openqa.selenium.support.FindBy;
 
 public class AddEmployeePage extends BasePage{
     @FindBy(css = "input[name='firstName']")
-    public WebElement employeeFirstNameWebElement;
+    private WebElement employeeFirstNameWebElement;
 
     @FindBy(css = "input[name='middleName']")
-    public WebElement employeeMiddleNameWebElement;
+    private WebElement employeeMiddleNameWebElement;
 
     @FindBy(css = "input[name='lastName']")
-    public WebElement employeeLastNameWebElement;
+    private WebElement employeeLastNameWebElement;
 
     @FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div[2]/div[1]/div[2]/div/div/div[2]/input")
-    public WebElement employeeIdWebElement;
+    private WebElement employeeIdWebElement;
 
     @FindBy(xpath = "/html/body/div/div[1]/div[2]/div[2]/div/div/form/div[1]/div[2]/div[2]/div/label/span")
-    public WebElement createLoginDetailsWebElement;
+    private WebElement createLoginDetailsWebElement;
 
     @FindBy(css = "button[type='submit']")
-    public WebElement saveButtonWebElement;
+    private WebElement saveButtonWebElement;
 
     public void addEmployee(String firstName, String lastName, String middleName, String empId) throws InterruptedException {
         Thread.sleep(2000);
@@ -40,6 +40,4 @@ public class AddEmployeePage extends BasePage{
     public void clickSaveEmployeeButton() {
         saveButtonWebElement.click();
     }
-
-
 }

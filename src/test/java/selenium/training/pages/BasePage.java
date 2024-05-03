@@ -8,15 +8,15 @@ import selenium.training.utils.Driver;
 
 public class BasePage {
 
-    public BasePage() {
+    protected BasePage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
     @FindBy(css = ".oxd-topbar-header-userarea ul[class='oxd-dropdown-menu'] li:nth-child(4)")
-    public WebElement logoutButtonWebElement;
+    private WebElement logoutButtonWebElement;
 
     @FindBy(css = ".oxd-topbar-header-userarea .oxd-userdropdown-icon")
-    public WebElement openProfileWebElement;
+    private WebElement openProfileWebElement;
 
     public void logout() {
         openProfileWebElement.click();

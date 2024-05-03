@@ -7,10 +7,10 @@ import org.openqa.selenium.support.FindBy;
 public class ViewCandidatesPage extends BasePage {
 
     @FindBy(css = "nav[aria-label='Topbar Menu'] > ul > li:nth-child(2) a")
-    public WebElement vacanciesButton;
+    private WebElement vacanciesButton;
 
     @FindBy(css = "nav[aria-label='Topbar Menu'] > ul > li:nth-child(1) a")
-    public WebElement candidatesButton;
+    private WebElement candidatesButton;
 
     public void clickButton(String buttonName) {
 
