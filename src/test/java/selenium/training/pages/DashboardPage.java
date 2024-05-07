@@ -7,22 +7,17 @@ import selenium.training.utils.Driver;
 
 public class DashboardPage extends BasePage {
 
-    @FindBy(css = ".oxd-topbar-header-userarea ul[class='oxd-dropdown-menu'] li:nth-child(4)")
-    public WebElement logoutButtonWebElement;
-
-    @FindBy(css = ".oxd-topbar-header-userarea .oxd-userdropdown-icon")
-    public WebElement openProfileWebElement;
-
     @FindBy(css = "a[href='/web/index.php/pim/viewPimModule']")
     public WebElement pimTabWebElement;
 
-    public void logout() {
-        openProfileWebElement.click();
-        logoutButtonWebElement.click();
-        Assertions.assertTrue(Driver.getDriver().getCurrentUrl().endsWith("/auth/login"));
-    }
+    @FindBy(xpath = "//*[@id='app']/div[1]/div[1]/aside/nav/div[2]/ul/li[5]")
+    private WebElement recruitmentTabWebElement;
 
     public void clickPIMTab() {
         pimTabWebElement.click();
+    }
+
+    public void clickRecruitmentTab() {
+        recruitmentTabWebElement.click();
     }
 }
